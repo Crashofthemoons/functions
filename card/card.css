@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+    font-size: 1em;
+    background-color: whitesmoke;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+.card-css {
+    height: 250px;
+    width: 250px;
+    border: 1px solid grey;
+    padding: 10px;
+    text-align: center;
+    margin: 10px;
+}
