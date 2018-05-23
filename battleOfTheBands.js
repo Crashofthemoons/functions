@@ -3,12 +3,12 @@
 
 //Your job is to write a function that accepts any band name as an argument. The function will increment a global variable by one each time it is invoked, and return that number, and the band name concatenated together.
 
-const bandNumber = 1
+let bandNumber = 0
 
 const takeNumber = function (bandName) {
     const bandList = bandName;
-    return `${bandNumber}. ${bandList}`;
     bandNumber += 1;
+    return `${bandNumber}. ${bandList}`;
     
 }
 
