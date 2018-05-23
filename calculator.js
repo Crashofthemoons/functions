@@ -10,29 +10,31 @@ let add = document.getElementById('add');
 let subtract = document.getElementById('subtract');
 let multiply = document.getElementById('multiply');
 let divide = document.getElementById('divide');
+let answer = document.getElementById('answer');
 
 
 add.addEventListener("click", function () {
     let num1 = parseInt(document.getElementById('number1').value);
     let num2 = parseInt(document.getElementById('number2').value);
-    console.log(num1 + num2);
+    answer.innerHTML = `${num1 + num2}`;
+    
 });
 
 subtract.addEventListener("click", function () {
     let num1 = parseInt(document.getElementById('number1').value);
     let num2 = parseInt(document.getElementById('number2').value);
-    console.log(num1 - num2);
+    answer.innerHTML = `${num1 - num2}`;
 });
 
 multiply.addEventListener("click", function () {
     let num1 = parseInt(document.getElementById('number1').value);
     let num2 = parseInt(document.getElementById('number2').value);
-    console.log(num1 * num2);
+    answer.innerHTML = `${num1 * num2}`;
 });
 
 divide.addEventListener("click", function () {
     let num1 = parseInt(document.getElementById('number1').value);
     let num2 = parseInt(document.getElementById('number2').value);
-    console.log(num1 / num2);
+    answer.innerHTML = `${num1 / num2}`;
 });
 
