@@ -9,32 +9,69 @@
 let card = document.querySelector('.card');
 
 document.querySelector('#create').addEventListener("click", function(){
+    console.log('button clicked')
     let input = document.querySelector('#input').value;
-    card.innerHTML +=
-    `<div class="card-css">
-        <input type="color" class="background">
-        <input type="color" class="font">
-        <button class="delete">Delete</button>
-        <p class="inputText">${input}</p>
-    </div>`;
-
-    let background = document.querySelector('.background');
-    let font = document.querySelector('.font');
-    let cardCss = document.querySelector('.card-css');
-
-    // background.addEventListener('input', cardCss, false);
-    background.addEventListener('change', watchColorPicker, false);
     
-    function watchColorPicker(event) {
-        cardCss.forEach(function(b) {
-          b.style.color = event.target.value;
-        });
-      }
+
+    let divCardCss = document.createElement('div');
+    let divClass = document.createAttribute('class');
+    divClass.value = "card-css";
+    divCardCss.setAttributeNode(divClass);
+    card.appendChild(divCardCss);
+    console.log(divCardCss);
+
+    let inputBackground = document.createElement('input'); // create input element
+    let type = document.createAttribute('type'); //create type attribute
+    type.value = "color"; //assign value of color to type
+    inputBackground.setAttributeNode(type); //set type to input element
+    divCardCss.appendChild(inputBackground); //append to div class
+
+    let inputFont = document.createElement('input');
+    let type2 = document.createAttribute('type');
+    type2.value = "color";
+    inputFont.setAttributeNode(type2); 
+    divCardCss.appendChild(inputFont);
+    
+    let button = document.createElement('button');
+    let btnClass = document.createAttribute('class');
+    btnClass.value = "delete";
+    let btnContent = document.createTextNode('Delete');
+    button.appendChild(btnContent);
+    button.setAttributeNode(btnClass);
+    divCardCss.appendChild(button);
+
+    let inputCard = document.createElement('p');
+    let cardInput = document.createAttribute('class');
+    cardInput.value = "inputText";
+    inputCard.setAttributeNode(cardInput);
+    let cardContent = document.createTextNode(`${input}`);
+    inputCard.appendChild(cardContent);
+    divCardCss.appendChild(inputCard);
+
+    // let background = document.querySelector('input');
+    // let font = document.querySelector('.font');
+    // let cardCss = document.querySelector('.card-css');
+
+    // this.addEventListener('change', colorPickerBackground, false);
+    
+    // function colorPickerBackground() {
+    //     event.target.parentElement.style.backgroundColor = event.target.value;
+    // }
+
+    // font.addEventListener('change', colorPickerFont, false);
+    
+    //   function colorPickerFont() {
+    //     event.target.parentElement.style.color = event.target.value;
+    // }
 
     document.querySelector('.delete').addEventListener("click", function() {
-        this.parentNode.remove();
-    })
-})
+        event.target.parentElement.visibility = event.target.remove();
+    }, false)
+
+})   
+
+
+
 
 
 
