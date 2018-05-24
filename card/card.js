@@ -19,22 +19,22 @@ document.querySelector('#create').addEventListener("click", function(){
     </div>`;
 
     let background = document.querySelector('.background');
-    let bkgValue = document.querySelector('.background').value;
     let font = document.querySelector('.font');
-    let fontValue = document.querySelector('.font').value;
     let cardCss = document.querySelector('.card-css');
 
-    background.addEventListener('change', function() {
-        cardCss.style.backgroundColor = bkgValue;
-    })
-
-    font.addEventListener('change', function() {
-        cardCss.style.color = fontValue;
-    })
+    // background.addEventListener('input', cardCss, false);
+    background.addEventListener('change', watchColorPicker, false);
+    
+    function watchColorPicker(event) {
+        cardCss.forEach(function(b) {
+          b.style.color = event.target.value;
+        });
+      }
 
     document.querySelector('.delete').addEventListener("click", function() {
-        card.innerHTML = ` `;
+        this.parentNode.remove();
     })
-
 })
+
+
 
