@@ -7,27 +7,29 @@
 // 7. When the user clicks the Delete button, the containing card, and no other cards, should then be removed from the DOM. Not just made invisible, actually removed from the DOM.
 
 let card = document.querySelector('.card');
+let createCard = document.querySelector('#create');
 
-document.querySelector('#create').addEventListener("click", function(){
-    console.log('button clicked')
-    let input = document.querySelector('#input').value;
+createCard.addEventListener("click", function(){
     
-
+    
+    
     let divCardCss = document.createElement('div');
     let divClass = document.createAttribute('class');
     divClass.value = "card-css";
     divCardCss.setAttributeNode(divClass);
     card.appendChild(divCardCss);
     console.log(divCardCss);
-
+    
     let inputBackground = document.createElement('input'); // create input element
     let type = document.createAttribute('type'); //create type attribute
+    inputBackground.setAttribute("class", "background")
     type.value = "color"; //assign value of color to type
     inputBackground.setAttributeNode(type); //set type to input element
     divCardCss.appendChild(inputBackground); //append to div class
-
+    
     let inputFont = document.createElement('input');
     let type2 = document.createAttribute('type');
+    inputFont.setAttribute("class", "font");
     type2.value = "color";
     inputFont.setAttributeNode(type2); 
     divCardCss.appendChild(inputFont);
@@ -40,6 +42,9 @@ document.querySelector('#create').addEventListener("click", function(){
     button.setAttributeNode(btnClass);
     divCardCss.appendChild(button);
 
+    
+    let input = document.querySelector('#input').value;
+    
     let inputCard = document.createElement('p');
     let cardInput = document.createAttribute('class');
     cardInput.value = "inputText";
@@ -48,23 +53,24 @@ document.querySelector('#create').addEventListener("click", function(){
     inputCard.appendChild(cardContent);
     divCardCss.appendChild(inputCard);
 
-    // let background = document.querySelector('input');
-    // let font = document.querySelector('.font');
-    // let cardCss = document.querySelector('.card-css');
+    let background = document.getElementsByClassName('.background');
+    let font = document.getElementsByClassName('.font');
+    let cardCss = document.getElementsByClassName('.card-css');
 
-    // this.addEventListener('change', colorPickerBackground, false);
+    this.addEventListener('change', colorPickerBackground);
     
-    // function colorPickerBackground() {
-    //     event.target.parentElement.style.backgroundColor = event.target.value;
-    // }
+    function colorPickerBackground() {
+        event.target.parentElement.style.backgroundColor = event.target.value;
+    }
+   
 
-    // font.addEventListener('change', colorPickerFont, false);
+    this.addEventListener('change', colorPickerFont, false);
     
-    //   function colorPickerFont() {
-    //     event.target.parentElement.style.color = event.target.value;
-    // }
+      function colorPickerFont() {
+        event.target.parentElement.style.color = event.target.value;
+    }
 
-    document.querySelector('.delete').addEventListener("click", function() {
+    document.getElementsByClassName('.delete').addEventListener("click", function() {
         event.target.parentElement.visibility = event.target.remove();
     }, false)
 
