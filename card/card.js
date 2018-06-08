@@ -19,29 +19,38 @@ createCard.addEventListener("click", function(){
     divCardCss.setAttributeNode(divClass);
     card.appendChild(divCardCss);
     console.log(divCardCss);
+
+    function colorPickerBackground() {
+        let background = document.getElementsByClassName('background');
+        event.target.parentElement.style.backgroundColor = event.target.value;
+    }
     
     let inputBackground = document.createElement('input'); // create input element
     let type = document.createAttribute('type'); //create type attribute
-    inputBackground.setAttribute("class", "background")
     type.value = "color"; //assign value of color to type
     inputBackground.setAttributeNode(type); //set type to input element
     divCardCss.appendChild(inputBackground); //append to div class
+    inputBackground.addEventListener('change', colorPickerBackground);
     
+    function colorPickerFont() {
+        event.target.parentElement.style.color = event.target.value;
+    }
     let inputFont = document.createElement('input');
     let type2 = document.createAttribute('type');
-    inputFont.setAttribute("class", "font");
-    type2.value = "color";
-    inputFont.setAttributeNode(type2); 
+    type2.value = "color"; 
+    inputFont.setAttributeNode(type2)
     divCardCss.appendChild(inputFont);
+    inputFont.addEventListener('change', colorPickerFont);
+
     
+    function deleteDelete() {
+        this.parentNode.remove()
+    }
     let button = document.createElement('button');
-    let btnClass = document.createAttribute('class');
-    btnClass.value = "delete";
     let btnContent = document.createTextNode('Delete');
     button.appendChild(btnContent);
-    button.setAttributeNode(btnClass);
     divCardCss.appendChild(button);
-
+    button.addEventListener("click", deleteDelete)
     
     let input = document.querySelector('#input').value;
     
@@ -53,26 +62,7 @@ createCard.addEventListener("click", function(){
     inputCard.appendChild(cardContent);
     divCardCss.appendChild(inputCard);
 
-    let background = document.getElementsByClassName('.background');
-    let font = document.getElementsByClassName('.font');
-    let cardCss = document.getElementsByClassName('.card-css');
 
-    this.addEventListener('change', colorPickerBackground);
-    
-    function colorPickerBackground() {
-        event.target.parentElement.style.backgroundColor = event.target.value;
-    }
-   
-
-    this.addEventListener('change', colorPickerFont, false);
-    
-      function colorPickerFont() {
-        event.target.parentElement.style.color = event.target.value;
-    }
-
-    document.getElementsByClassName('.delete').addEventListener("click", function() {
-        event.target.parentElement.visibility = event.target.remove();
-    }, false)
 
 })   
 
